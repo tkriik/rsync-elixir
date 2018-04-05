@@ -1,3 +1,2 @@
 defmodule RsyncElixir do
-
 end

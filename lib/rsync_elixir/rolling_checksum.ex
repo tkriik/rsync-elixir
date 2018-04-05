@@ -35,8 +35,18 @@ defmodule RsyncElixir.RollingChecksum do
   end
 
   @spec final(context) :: checksum
-  def final({_, _, a, b}) do
+  def final({_, _, _, a, b}) do
     a + 0xFFFF * b
+  end
+
+  @spec compute(data :: binary) :: checksum
+  def compute(data) do
+    final(init(data))
+  end
+
+  @spec size() :: 4
+  def size() do
+    4
   end
 
   defp init_a(data) do
